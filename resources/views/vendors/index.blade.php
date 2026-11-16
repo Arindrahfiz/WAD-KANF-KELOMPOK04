@@ -6,6 +6,14 @@
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 </head>
 <body>
+    <div style="display:flex; justify-content:space-between; padding:10px 20px;">
+        <span>{{ auth()->user()->name }} ({{ auth()->user()->role }})</span>
+        <form action="{{ route('logout') }}" method="POST">
+            @csrf
+            <button type="submit">Logout</button>
+        </form>
+    </div>
+
     <div class="header">
         <h1>Vendor dan Supplier</h1>
         <p>Kelola data vendor, status legalitas, serta kontak PIC pemasok gudang.</p>
@@ -15,11 +23,15 @@
         @if ($vendors->isEmpty())
             <div class="kosong">
                 <h2>Belum ada data vendor</h2>
-                <p>Mulai daftarkan vendor pertama Anda untuk mengelola pengadaan gudang.</p>
-                <a href="{{ route('vendors.create') }}" class="tombol tombol-utama">Tambah Data Vendor</a>
+                @if (auth()->user()->role === 'admin')
+                    <p>Mulai daftarkan vendor pertama Anda untuk mengelola pengadaan gudang.</p>
+                    <a href="{{ route('vendors.create') }}" class="tombol tombol-utama">Tambah Data Vendor</a>
+                @endif
             </div>
         @else
-            <a href="{{ route('vendors.create') }}" class="tombol tombol-utama">+ Tambah Data Vendor</a>
+            @if (auth()->user()->role === 'admin')
+                <a href="{{ route('vendors.create') }}" class="tombol tombol-utama">+ Tambah Data Vendor</a>
+            @endif
 
             <table>
                 <tr>
@@ -30,7 +42,9 @@
                     <th>PIC</th>
                     <th>Telepon PIC</th>
                     <th>Status</th>
-                    <th>Aksi</th>
+                    @if (auth()->user()->role === 'admin')
+                        <th>Aksi</th>
+                    @endif
                 </tr>
                 @foreach ($vendors as $v)
                 <tr>
@@ -50,6 +64,7 @@
                             <span class="nonaktif">Nonaktif</span>
                         @endif
                     </td>
+                    @if (auth()->user()->role === 'admin')
                     <td>
                         <a href="{{ route('vendors.edit', $v->id) }}" class="tombol tombol-abu tombol-kecil">Edit</a>
                         <form action="{{ route('vendors.destroy', $v->id) }}" method="POST" style="display:inline"
@@ -59,6 +74,7 @@
                             <button type="submit" class="tombol tombol-merah tombol-kecil">Hapus</button>
                         </form>
                     </td>
+                    @endif
                 </tr>
                 @endforeach
             </table>
