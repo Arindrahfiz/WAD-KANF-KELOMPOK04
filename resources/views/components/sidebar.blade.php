@@ -8,60 +8,25 @@
 
     <nav class="sidebar-menu">
         <a href="{{ route('vendors.index') }}"
-           class="{{ request()->routeIs('vendors.index') ? 'aktif' : '' }}">
-            Daftar Vendor
+           class="{{ request()->routeIs('vendors.*') ? 'aktif' : '' }}">
+            Vendor
         </a>
 
-        @if (auth()->user()->role === 'admin')
-            <a href="{{ route('vendors.create') }}"
-               class="{{ request()->routeIs('vendors.create') ? 'aktif' : '' }}">
-                Tambah Vendor
-            </a>
-        @endif
-
-        {{-- Menu modul lain tinggal ditambah di sini --}}
-    </nav>
-
-    <nav class="sidebar-menu">
-        <a href="{{ route('vendors.index') }}"
-           class="{{ request()->routeIs('vendors.index') ? 'aktif' : '' }}">
+        <a href="{{ route('katalog.index') }}"
+           class="{{ request()->routeIs('katalog.*') ? 'aktif' : '' }}">
             Katalog
         </a>
 
-    @if (auth()->user()->role === 'admin')
-            <a href="{{ route('vendors.create') }}"
-               class="{{ request()->routeIs('vendors.create') ? 'aktif' : '' }}">
-                Katalog
-            </a>
-        @endif
-
-    <nav class="sidebar-menu">
-        <a href="{{ route('vendors.index') }}"
-           class="{{ request()->routeIs('vendors.index') ? 'aktif' : '' }}">
+        <a href="{{ route('zonasi.index') }}"
+           class="{{ request()->routeIs('zonasi.*') ? 'aktif' : '' }}">
             Zonasi dan rak barang
         </a>
 
-    @if (auth()->user()->role === 'admin')
-            <a href="{{ route('vendors.create') }}"
-               class="{{ request()->routeIs('vendors.create') ? 'aktif' : '' }}">
-                Zonasi dan rak barang
-            </a>
-        @endif
-
-
-    <nav class="sidebar-menu">
-        <a href="{{ route('vendors.index') }}"
-           class="{{ request()->routeIs('vendors.index') ? 'aktif' : '' }}">
+        <a href="{{ route('armada.index') }}"
+           class="{{ request()->routeIs('armada.*') ? 'aktif' : '' }}">
             Armada Operasional
         </a>
-    
-    @if (auth()->user()->role === 'admin')
-            <a href="{{ route('vendors.create') }}"
-               class="{{ request()->routeIs('vendors.create') ? 'aktif' : '' }}">
-                Armada Operasional
-            </a>
-        @endif
-
+    </nav>
 
     <form action="{{ route('logout') }}" method="POST" class="sidebar-logout">
         @csrf
