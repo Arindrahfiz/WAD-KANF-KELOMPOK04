@@ -119,3 +119,27 @@ input:disabled {
     padding-top: 16px;
     border-top: 1px solid #efefef;
 }
+
+body { margin: 0; display: flex; min-height: 100vh; }
+
+.sidebar {
+    width: 220px;
+    background: #2f4f43;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    padding: 20px 0;
+    flex-shrink: 0;
+}
+.sidebar-brand { font-size: 20px; font-weight: bold; padding: 0 20px 15px; }
+.sidebar-user { padding: 10px 20px; border-top: 1px solid rgba(255,255,255,.2);
+                border-bottom: 1px solid rgba(255,255,255,.2); margin-bottom: 10px; }
+.sidebar-user small { text-transform: capitalize; opacity: .7; }
+.sidebar-menu { flex: 1; }
+.sidebar-menu a { display: block; padding: 10px 20px; color: #fff; text-decoration: none; }
+.sidebar-menu a:hover { background: rgba(255,255,255,.1); }
+.sidebar-menu a.aktif { background: rgba(255,255,255,.2); font-weight: bold; }
+.sidebar-logout { padding: 0 20px; }
+.sidebar-logout button { width: 100%; padding: 8px; cursor: pointer; }
+
+.konten { flex: 1; }
