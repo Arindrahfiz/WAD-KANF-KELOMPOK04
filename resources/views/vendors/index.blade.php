@@ -10,7 +10,7 @@
 
     <div class="konten">
         <div class="header">
-            <h1>Vendor dan Supplier</h1>
+            <h1>Vendor dan Supplier111111</h1>
             <p>Kelola data vendor, status legalitas, serta kontak PIC pemasok gudang.</p>
         </div>
 
