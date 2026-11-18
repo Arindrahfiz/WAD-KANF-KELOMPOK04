@@ -11,21 +11,6 @@
            class="{{ request()->routeIs('vendors.*') ? 'aktif' : '' }}">
             Vendor
         </a>
-
-        <a href="{{ route('katalog.index') }}"
-           class="{{ request()->routeIs('katalog.*') ? 'aktif' : '' }}">
-            Katalog
-        </a>
-
-        <a href="{{ route('zonasi.index') }}"
-           class="{{ request()->routeIs('zonasi.*') ? 'aktif' : '' }}">
-            Zonasi dan rak barang
-        </a>
-
-        <a href="{{ route('armada.index') }}"
-           class="{{ request()->routeIs('armada.*') ? 'aktif' : '' }}">
-            Armada Operasional
-        </a>
     </nav>
 
     <form action="{{ route('logout') }}" method="POST" class="sidebar-logout">
